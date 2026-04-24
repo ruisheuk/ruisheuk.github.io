@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Rui She | Finance Professional</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #f7f6f3;
+    --bg2: #ffffff;
+    --navy: #0d1b2a;
+    --navy-mid: #1e3a5f;
+    --accent: oklch(58% 0.19 218);
+    --accent2: oklch(62% 0.18 28);
+    --text: #1a2332;
+    --muted: #6b7a8d;
+    --border: #e4e2dc;
+    --card-bg: #ffffff;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(247,246,243,0.88);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 5vw;
+    height: 64px;
+  }
+  .nav-logo {
+    font-weight: 800; font-size: 1.1rem; letter-spacing: -0.02em;
+    color: var(--navy);
+  }
+  .nav-logo span { color: var(--accent); }
+  nav ul { list-style: none; display: flex; gap: 2rem; }
+  nav ul a {
+    text-decoration: none; font-size: 0.875rem; font-weight: 500;
+    color: var(--muted); transition: color .2s;
+  }
+  nav ul a:hover { color: var(--accent); }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 52% 48%;
+    align-items: stretch;
+    background: var(--bg);
+    position: relative;
+    overflow: hidden;
+    padding: 0;
+    max-height: 100vh;
+  }
+
+  .hero-text {
+    position: relative; z-index: 1;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 80px 8vw 40px 7vw;
+  }
+
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: oklch(96% 0.04 218);
+    color: var(--accent);
+    font-size: 0.78rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+    padding: 6px 14px; border-radius: 100px;
+    margin-bottom: 1.5rem;
+  }
+  .hero-badge::before {
+    content: ''; width: 7px; height: 7px; border-radius: 50%;
+    background: var(--accent); animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%,100% { opacity: 1; transform: scale(1); }
+    50% { opacity: .5; transform: scale(1.4); }
+  }
+
+  .hero-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(3rem, 5vw, 4.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--navy);
+    margin-bottom: 0.5rem;
+  }
+  .hero-name em { color: var(--accent); font-style: italic; }
+
+  .hero-title {
+    font-size: clamp(1rem, 1.8vw, 1.2rem);
+    font-weight: 500;
+    color: var(--muted);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-summary {
+    font-size: 0.97rem;
+    line-height: 1.7;
+    color: #3d4f62;
+    max-width: 480px;
+    margin-bottom: 1.75rem;
+  }
+
+  .hero-highlights {
+    display: flex; flex-direction: column; gap: 10px;
+    margin-bottom: 1.75rem; max-width: 480px;
+  }
+  .hero-hi {
+    display: flex; align-items: flex-start; gap: 12px;
+  }
+  .hero-hi-icon {
+    width: 32px; height: 32px; border-radius: 9px;
+    background: oklch(93% 0.07 218);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem; flex-shrink: 0; margin-top: 1px;
+  }
+  .hero-hi-text { font-size: 0.86rem; color: #3d4f62; line-height: 1.55; }
+  .hero-hi-text strong { color: var(--navy); display: block; font-size: 0.9rem; margin-bottom: 1px; }
+  .hero-stats {
+    display: flex; gap: 2rem;
+    margin-bottom: 2rem;
+  }
+  .stat-num {
+    font-size: 2rem; font-weight: 800; color: var(--navy);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 0.78rem; color: var(--muted); font-weight: 500;
+    text-transform: uppercase; letter-spacing: .05em;
+    margin-top: 4px;
+  }
+
+  .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--navy);
+    color: #fff;
+    padding: 13px 28px;
+    border-radius: 100px;
+    font-weight: 600; font-size: 0.9rem;
+    text-decoration: none; border: none; cursor: pointer;
+    transition: all .25s; display: inline-flex; align-items: center; gap: 8px;
+  }
+  .btn-primary:hover { background: var(--accent); transform: translateY(-2px); box-shadow: 0 8px 24px oklch(58% 0.19 218 / 0.3); }
+  .btn-secondary {
+    background: transparent;
+    color: var(--navy);
+    padding: 13px 28px;
+    border-radius: 100px;
+    font-weight: 600; font-size: 0.9rem;
+    text-decoration: none; border: 2px solid var(--border); cursor: pointer;
+    transition: all .25s; display: inline-flex; align-items: center; gap: 8px;
+  }
+  .btn-secondary:hover { border-color: var(--navy); transform: translateY(-2px); }
+
+  /* Photo */
+  .hero-photo-wrap {
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-photo {
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: center top;
+    display: block;
+  }
+  .hero-photo-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to right, var(--bg) 0%, transparent 18%);
+    pointer-events: none;
+  }
+
+  /* ── SECTION COMMON ── */
+  section { padding: var(--section-pad, 100px) 5vw; }
+
+  .section-label {
+    font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--accent);
+    margin-bottom: 0.75rem;
+  }
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    color: var(--navy);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+  }
+  .section-sub {
+    color: var(--muted); font-size: 1rem; max-width: 100%;
+    margin-bottom: 2rem; white-space: nowrap;
+  }
+
+  /* ── COMPETENCIES ── */
+  #competencies { background: oklch(94% 0.05 218); }
+  #competencies .section-label { color: var(--accent); }
+  #competencies .section-title { color: var(--navy); }
+  #competencies .section-sub { color: var(--muted); }
+
+  .comp-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  .comp-card {
+    background: white;
+    border: 1px solid oklch(90% 0.04 218);
+    border-radius: 20px;
+    padding: 1.75rem;
+    transition: all .3s;
+  }
+  .comp-card:hover {
+    background: white;
+    transform: translateY(-4px);
+    box-shadow: 0 8px 32px oklch(70% 0.08 218 / 0.15);
+    border-color: var(--accent);
+  }
+  .comp-icon {
+    font-size: 1.8rem; margin-bottom: 1rem;
+  }
+  .comp-title {
+    color: var(--navy); font-weight: 700; font-size: 1rem; margin-bottom: .5rem;
+  }
+  .comp-desc {
+    color: var(--muted); font-size: 0.85rem; line-height: 1.6; margin-bottom: 0;
+  }
+  .comp-card { display: flex; flex-direction: column; gap: .75rem; }
+  .comp-chips {
+    display: flex; flex-wrap: wrap; gap: 8px;
+    padding-top: .75rem;
+    border-top: 1px solid var(--border);
+  }
+  .comp-chip {
+    background: white; color: var(--accent);
+    font-size: 0.78rem; font-weight: 600;
+    padding: 5px 13px; border-radius: 8px;
+    border: 1.5px solid oklch(85% 0.08 218);
+    cursor: default;
+    transition: all .2s;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  }
+  .comp-chip:hover {
+    background: var(--accent); color: white;
+    border-color: var(--accent);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px oklch(58% 0.19 218 / 0.25);
+  }
+
+  /* ── EXPERIENCE (card grid) ── */
+  #experience { background: var(--bg); }
+  .exp-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    width: 100%;
+  }
+  .exp-card2 {
+    background: white; border-radius: 24px;
+    padding: 2rem; border: 1px solid var(--border);
+    transition: box-shadow .3s, transform .3s;
+    display: flex; flex-direction: column; gap: 1.25rem;
+  }
+  .exp-card2:hover { box-shadow: 0 12px 40px rgba(0,0,0,.08); transform: translateY(-4px); }
+  .exp-logo-wrap {
+    width: 100%; height: 80px;
+    display: flex; align-items: center; justify-content: flex-start;
+  }
+  .exp-logo-wrap img { max-height: 72px; max-width: 200px; object-fit: contain; object-position: left center; }
+  .exp-card2 .exp-company { font-weight: 700; font-size: 1rem; color: var(--navy); }
+  .exp-card2 .exp-role { color: var(--muted); font-size: 0.82rem; font-weight: 500; margin-top: 2px; }
+  .exp-card2 .exp-date {
+    background: oklch(95% 0.04 218); color: var(--accent);
+    font-size: 0.75rem; font-weight: 600;
+    padding: 3px 10px; border-radius: 100px;
+    display: inline-block; margin-top: 6px;
+  }
+  .exp-card2 .exp-bullets { list-style: none; display: flex; flex-direction: column; gap: .65rem; margin-top: 0; }
+  .exp-card2 .exp-bullets li {
+    font-size: 0.86rem; color: #3d4f62; line-height: 1.6;
+    display: flex; gap: 8px; align-items: flex-start;
+  }
+  .exp-card2 .exp-bullets li::before { content: '→'; color: var(--accent); flex-shrink: 0; font-size: 0.78rem; margin-top: 2px; }
+  strong { color: var(--navy); }
+
+  
+
+  /* ── EDUCATION ── */
+  #education { background: oklch(94% 0.05 218); }
+  #education .section-label { color: var(--accent); }
+  #education .section-title { color: var(--navy); }
+  #education .section-sub { color: var(--muted); }
+  .edu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .edu-card {
+    background: white;
+    border: 1px solid oklch(90% 0.04 218);
+    border-radius: 24px;
+    padding: 2.5rem 2rem;
+    display: flex; flex-direction: column; gap: 1.25rem;
+    transition: all .3s;
+  }
+  .edu-card:hover { box-shadow: 0 8px 32px oklch(70% 0.08 218 / 0.15); transform: translateY(-4px); border-color: var(--accent); }
+  .edu-logo-banner {
+    width: 100%; height: 72px;
+    display: flex; align-items: center; justify-content: flex-start;
+    background: oklch(97% 0.02 218); border: 1px solid oklch(90% 0.04 218);
+    border-radius: 14px; padding: 10px 16px;
+  }
+  .edu-logo-banner img { max-height: 52px; max-width: 100%; object-fit: contain; object-position: left center; }
+  .edu-degree { font-weight: 700; font-size: 1.05rem; color: var(--navy); margin-bottom: 4px; }
+  .edu-school { color: var(--muted); font-size: 0.85rem; margin-bottom: 4px; line-height: 1.4; }
+  .edu-modules { color: oklch(58% 0.03 218); font-size: 0.78rem; line-height: 1.5; margin-bottom: 4px; }
+  .edu-year {
+    font-size: 0.75rem; font-weight: 600; color: var(--accent);
+    background: oklch(95% 0.04 218); padding: 3px 12px; border-radius: 100px;
+    display: inline-block; align-self: flex-start; white-space: nowrap;
+  }
+
+  /* ── CONTACT ── */
+  #contact {
+    background: var(--navy);
+    text-align: center;
+    padding: 100px 5vw;
+  }
+  #contact .section-label { color: oklch(75% 0.14 218); }
+  #contact .section-title { color: white; margin-bottom: 1rem; }
+  #contact p { color: oklch(75% 0.04 218); margin-bottom: 3rem; font-size: 1.05rem; }
+  .contact-links { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; }
+  .contact-link {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.12);
+    color: white; text-decoration: none;
+    padding: 14px 28px; border-radius: 100px;
+    font-weight: 600; font-size: 0.9rem;
+    transition: all .25s;
+  }
+  .contact-link:hover { background: var(--accent); border-color: var(--accent); transform: translateY(-3px); }
+  .contact-icon { font-size: 1.1rem; }
+
+  .visa-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12);
+    color: oklch(80% 0.1 140); font-size: 0.82rem; font-weight: 600;
+    padding: 8px 18px; border-radius: 100px; margin-top: 2rem;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #080f17; text-align: center;
+    padding: 24px; color: oklch(50% 0.03 218); font-size: 0.8rem;
+  }
+
+  /* ── ANIMATIONS ── */
+  .fade-up { opacity: 0; transform: translateY(30px); transition: all .7s cubic-bezier(.4,0,.2,1); }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1024px) {
+    .comp-grid { grid-template-columns: repeat(2, 1fr) !important; }
+    .exp-grid  { grid-template-columns: repeat(2, 1fr) !important; }
+    .edu-grid  { grid-template-columns: repeat(2, 1fr) !important; }
+  }
+
+  @media (max-width: 768px) {
+    nav ul { display: none !important; }
+
+    #hero {
+      grid-template-columns: 1fr !important;
+      max-height: none !important;
+      min-height: auto !important;
+    }
+    .hero-photo-wrap {
+      order: -1;
+      height: 60vw !important;
+      min-height: 240px;
+      max-height: 360px;
+    }
+    .hero-photo { border-radius: 0; }
+    .hero-text {
+      padding: 32px 6vw 40px !important;
+      text-align: center;
+    }
+    .hero-name { font-size: 2.4rem !important; }
+    .hero-badge { margin: 0 auto 1.2rem !important; }
+    .hero-summary, .hero-highlights { max-width: 100% !important; }
+    .hero-highlights { text-align: left; }
+    .hero-stats { justify-content: center; gap: 1.5rem !important; }
+    .hero-ctas { justify-content: center; }
+
+    .section-sub { white-space: normal !important; overflow: visible !important; }
+
+    .comp-grid { grid-template-columns: 1fr !important; }
+    .exp-grid  { grid-template-columns: 1fr !important; }
+    .edu-grid  { grid-template-columns: 1fr !important; }
+
+    #competencies { padding: 40px 20px !important; border-radius: 16px !important; }
+    section { padding: 60px 5vw !important; }
+    .section-title { font-size: 1.75rem !important; }
+  }
+
+  @media (max-width: 480px) {
+    .hero-name { font-size: 2rem !important; }
+    .hero-stats { gap: 1rem !important; }
+    .stat-num { font-size: 1.5rem !important; }
+    .hero-ctas { flex-direction: column; align-items: center; }
+    .btn-primary, .btn-secondary { width: 100%; justify-content: center; }
+  }
+</style>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+</head>
+<body>
+
+<!-- NAV -->
+<div id="tweaks-root"></div>
+<nav>
+  <div class="nav-logo">Rui <span>She</span></div>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-text">
+    <div class="hero-badge">Available for new opportunities</div>
+    <h1 class="hero-name">Rui <em>She</em></h1>
+    <p class="hero-title">Finance Business Partner &amp; FP&amp;A Specialist · MSc · ACCA</p>
+    <p class="hero-summary">
+      ACCA part-qualified finance professional with 5+ years of hands-on experience in <strong>FP&amp;A</strong>, <strong>commercial business partnering</strong> and <strong>demand forecasting</strong> across consumer electronics, logistics and retail. Proven ability to turn large, complex datasets into clear recommendations that influence senior leadership — from channel revenue forecasting at Huawei UK to cost modelling at Deppon Logistics in Shanghai.
+    </p>
+    <div class="hero-highlights">
+      <div class="hero-hi">
+        <div class="hero-hi-icon">📊</div>
+        <div class="hero-hi-text"><strong>Channel Finance &amp; NRM · Huawei UK</strong>Revenue &amp; volume forecasting across UK &amp; Ireland retail and wholesale channels</div>
+      </div>
+      <div class="hero-hi">
+        <div class="hero-hi-icon">📈</div>
+        <div class="hero-hi-text"><strong>10% Gross Margin Uplift Delivered</strong>Pricing &amp; promotion optimisation in partnership with Sales &amp; Marketing</div>
+      </div>
+      <div class="hero-hi">
+        <div class="hero-hi-icon">🌏</div>
+        <div class="hero-hi-text"><strong>Bilingual · Advanced Excel · SAP · ACCA</strong>English &amp; Mandarin · MSc Bayes Business School · ACCA Part-Qualified</div>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">5+</div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+      <div>
+        <div class="stat-num">10%</div>
+        <div class="stat-label">Margin Uplift Delivered</div>
+      </div>
+      <div>
+        <div class="stat-num">4</div>
+        <div class="stat-label">Industry Sectors</div>
+      </div>
+    </div>
+    <div class="hero-ctas">
+      <a href="/cdn-cgi/l/email-protection#e795928e948f82928ca7808a868e8bc984888a" class="btn-primary">
+        <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        Get in Touch
+      </a>
+      <a href="https://www.linkedin.com/in/rui-she/" target="_blank" class="btn-secondary">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        LinkedIn
+      </a>
+    </div>
+  </div>
+
+  <div class="hero-photo-wrap">
+    <img class="hero-photo" src="uploads/id.png" alt="Rui She" />
+    <div class="hero-photo-overlay"></div>
+  </div>
+</section>
+
+<!-- COMPETENCIES -->
+<section id="about">
+  <div id="competencies" style="border-radius:32px;padding:80px 60px;">
+    <p class="section-label fade-up">Skills &amp; Competencies</p>
+    <h2 class="section-title fade-up">What I bring to the table</h2>
+    <p class="section-sub fade-up">5+ years of commercial finance expertise — from forecasting and partnering to data modelling and cross-functional leadership.</p>
+
+    <div class="comp-grid">
+      <div class="comp-card fade-up">
+        <div class="comp-icon">📈</div>
+        <div class="comp-title">Financial Planning &amp; Analysis</div>
+        <div class="comp-desc">Budgeting, rolling forecasts, variance analysis, and full P&amp;L management across complex multi-channel businesses.</div>
+        <div class="comp-chips">
+          <span class="comp-chip">Budgeting</span><span class="comp-chip">Rolling Forecasts</span><span class="comp-chip">Variance Analysis</span><span class="comp-chip">P&amp;L Management</span><span class="comp-chip">Month-End Close</span>
+        </div>
+      </div>
+      <div class="comp-card fade-up">
+        <div class="comp-icon">🤝</div>
+        <div class="comp-title">Commercial Business Partnering</div>
+        <div class="comp-desc">Partnering with Sales, Marketing and Product to challenge pricing and promotion assumptions and drive margin performance.</div>
+        <div class="comp-chips">
+          <span class="comp-chip">Sales Finance</span><span class="comp-chip">Promotion Analysis</span><span class="comp-chip">Pricing Strategy</span><span class="comp-chip">ROI Analysis</span>
+        </div>
+      </div>
+      <div class="comp-card fade-up">
+        <div class="comp-icon">🎯</div>
+        <div class="comp-title">Demand Forecasting</div>
+        <div class="comp-desc">Preparing structured revenue and volume forecasts with clear driver commentary, risks and opportunities to leadership.</div>
+        <div class="comp-chips">
+          <span class="comp-chip">Revenue Forecasting</span><span class="comp-chip">Volume Planning</span><span class="comp-chip">Risk &amp; Opps</span><span class="comp-chip">Channel Finance</span>
+        </div>
+      </div>
+      <div class="comp-card fade-up">
+        <div class="comp-icon">💻</div>
+        <div class="comp-title">Data &amp; Technical Tools</div>
+        <div class="comp-desc">Advanced Excel, SAP ERP, and Power Query — turning large, complex datasets into clean, reliable models and reports.</div>
+        <div class="comp-chips">
+          <span class="comp-chip">Advanced Excel</span><span class="comp-chip">Power Query</span><span class="comp-chip">SAP ERP</span><span class="comp-chip">Financial Modelling</span><span class="comp-chip">Pivot Tables</span>
+        </div>
+      </div>
+      <div class="comp-card fade-up">
+        <div class="comp-icon">💰</div>
+        <div class="comp-title">Margin &amp; Profitability</div>
+        <div class="comp-desc">Delivering cost-benefit analysis, profitability segmentation and promotion evaluation that drives measurable margin improvement.</div>
+        <div class="comp-chips">
+          <span class="comp-chip">Margin Optimisation</span><span class="comp-chip">Cost Modelling</span><span class="comp-chip">Customer P&amp;L</span><span class="comp-chip">Incentive Management</span>
+        </div>
+      </div>
+      <div class="comp-card fade-up">
+        <div class="comp-icon">🌏</div>
+        <div class="comp-title">Communication &amp; Languages</div>
+        <div class="comp-desc">Fluent in English and Mandarin — presenting complex financial insights clearly to senior UK and EMEIA leadership teams.</div>
+        <div class="comp-chips">
+          <span class="comp-chip">English (Fluent)</span><span class="comp-chip">Mandarin (Native)</span><span class="comp-chip">ACCA (9/13)</span><span class="comp-chip">MSc Finance</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <p class="section-label fade-up">Career Journey</p>
+  <h2 class="section-title fade-up">Professional Experience</h2>
+  <p class="section-sub fade-up">Across industries — from <strong>logistics &amp; supply chain</strong> in China to <strong>consumer electronics</strong> and <strong>retail consumer goods</strong> in the UK.</p>
+
+  <div class="exp-grid">
+
+    <div class="exp-card2 fade-up">
+      <div class="exp-logo-wrap"><img src="uploads/Huawei.png" alt="Huawei" /></div>
+      <div>
+        <div class="exp-company">Huawei Technologies (UK) · London</div>
+        <div class="exp-role">Channel Finance Senior Specialist</div>
+        <div class="exp-date">Jan 2022 – Present</div>
+      </div>
+      <ul class="exp-bullets">
+        <li>Revenue &amp; volume forecasting for UK &amp; Ireland channels with structured variance commentary to leadership.</li>
+        <li>Pricing &amp; promotion partnering with Sales &amp; Marketing — increased gross margin by 10% in key categories.</li>
+        <li>Incentive verification tools reduced high-risk exposure; improved incentive profitability by 7%.</li>
+        <li>Excel data consistency improved to 80%, underpinning reliable forecasts and period-end reporting.</li>
+      </ul>
+    </div>
+
+    <div class="exp-card2 fade-up">
+      <div class="exp-logo-wrap"><img src="uploads/genetec.png" alt="Genetec" /></div>
+      <div>
+        <div class="exp-company">Genetec (UK) Limited · London</div>
+        <div class="exp-role">Finance Analyst — Business Partnering &amp; Performance</div>
+        <div class="exp-date">Aug 2018 – Nov 2021</div>
+      </div>
+      <ul class="exp-bullets">
+        <li>Led monthly budget design; reduced overall budgeting cycle by 5 working days.</li>
+        <li>Variance deep-dives identified cost savings of up to 30% on specific expense lines within 3 months.</li>
+        <li>Promotional P&amp;L analysis delivered approx. 10% revenue uplift in off-season periods.</li>
+        <li>Rebate settlement improvements boosted processing speed &amp; accuracy by 25%.</li>
+      </ul>
+    </div>
+
+    <div class="exp-card2 fade-up">
+      <div class="exp-logo-wrap"><img src="uploads/deppon.png" alt="Deppon Express" /></div>
+      <div>
+        <div class="exp-company">China Deppon Logistics · Shanghai</div>
+        <div class="exp-role">FP&amp;A Analyst — Supply Chain &amp; Cost Modelling</div>
+        <div class="exp-date">May 2018 – Oct 2019</div>
+      </div>
+      <ul class="exp-bullets">
+        <li>Cost-benefit analysis by product, customer and route — increased regional profit margin by 10%.</li>
+        <li>Top 50 customer profitability management improved gross margin by 6% within two months.</li>
+        <li>SAP data streamlining cut management reporting to within 3 working days of P&amp;L issuance.</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <p class="section-label fade-up">Academic Background</p>
+  <h2 class="section-title fade-up">Education</h2>
+  <p class="section-sub fade-up">From Birmingham to London — building a rigorous academic foundation in accounting, finance and business.</p>
+
+  <div class="edu-grid">
+    <div class="edu-card fade-up">
+      <div class="edu-logo-banner">
+        <img src="uploads/bayes.jpg" alt="Bayes Business School" />
+      </div>
+      <div class="edu-degree">MSc International Accounting &amp; Finance</div>
+      <div class="edu-school">Bayes (Cass) Business School · City, University of London</div>
+      <div class="edu-modules">Financial Reporting · Financial Statement Analysis · Strategic Cost Management</div>
+      <div class="edu-year">2016 – 2017</div>
+    </div>
+    <div class="edu-card fade-up">
+      <div class="edu-logo-banner">
+        <img src="uploads/university-of-birmingham.png" alt="University of Birmingham" />
+      </div>
+      <div class="edu-degree">BSc Accounting &amp; Finance</div>
+      <div class="edu-school">University of Birmingham</div>
+      <div class="edu-modules">Financial Accounting · Management Accounting · Taxation · Auditing</div>
+      <div class="edu-year">2013 – 2016</div>
+    </div>
+    <div class="edu-card fade-up">
+      <div class="edu-logo-banner">
+        <img src="uploads/acca.png" alt="ACCA" />
+      </div>
+      <div class="edu-degree">ACCA — Advanced Diploma</div>
+      <div class="edu-school">Association of Chartered Certified Accountants</div>
+      <div class="edu-modules">Part-Qualified · Accounting &amp; Business</div>
+      <div class="edu-year">In Progress</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <p class="section-label">Let's Connect</p>
+  <h2 class="section-title" style="max-width:600px;margin:0 auto 1rem;">Open to exciting finance opportunities</h2>
+  <p>Based in England, UK · Available immediately · No visa sponsorship required</p>
+  <div class="contact-links">
+    <a href="/cdn-cgi/l/email-protection#2e5c5b475d464b5b456e49434f4742004d4143" class="contact-link">
+      <span class="contact-icon">✉</span> <span class="__cf_email__" data-cfemail="d0a2a5b9a3b8b5a5bb90b7bdb1b9bcfeb3bfbd">[email&#160;protected]</span>
+    </a>
+    <a href="https://www.linkedin.com/in/rui-she/" target="_blank" class="contact-link">
+      <span class="contact-icon">in</span> linkedin.com/in/rui-she
+    </a>
+  </div>
+
+</section>
+
+<footer>
+  © 2026 Rui She · Built with passion · Warwickshire, UK
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // IntersectionObserver for fade-up and skill bars
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(el => {
+      if (el.isIntersecting) {
+        el.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.fade-up, .exp-item').forEach(el => observer.observe(el));
+
+  // Skill bar animation on scroll
+  const skillObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.querySelectorAll('.skill-fill').forEach(bar => {
+          bar.classList.add('animated');
+        });
+      }
+    });
+  }, { threshold: 0.3 });
+
+  const skillSection = document.getElementById('skills');
+  if (skillSection) skillObserver.observe(skillSection);
+</script>
+
+<script type="text/babel">
+const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "sectionPadding": 100,
+  "accentColor": "#1a7fd4"
+}/*EDITMODE-END*/;
+
+let tweaksRootMounted = false;
+
+function TweaksApp() {
+  const [tweaks, setTweaks] = React.useState(TWEAK_DEFAULTS);
+
+  const apply = (vals) => {
+    document.documentElement.style.setProperty('--section-pad', vals.sectionPadding + 'px');
+    document.documentElement.style.setProperty('--accent', vals.accentColor);
+  };
+
+  React.useEffect(() => { apply(tweaks); }, [tweaks]);
+
+  const handleChange = (key, val) => {
+    const next = { ...tweaks, [key]: val };
+    setTweaks(next);
+    window.parent.postMessage({ type: '__edit_mode_set_keys', edits: { [key]: val } }, '*');
+  };
+
+  return (
+    <TweaksPanel onClose={() => window.parent.postMessage({ type: '__edit_mode_dismissed' }, '*')}>
+      <TweakSection label="Layout">
+        <TweakSlider label="Section Spacing" value={tweaks.sectionPadding}
+          min={30} max={140} step={5} onChange={v => handleChange('sectionPadding', v)} />
+      </TweakSection>
+      <TweakSection label="Colours">
+        <TweakColor label="Accent Colour" value={tweaks.accentColor}
+          onChange={v => handleChange('accentColor', v)} />
+      </TweakSection>
+    </TweaksPanel>
+  );
+}
+
+window.addEventListener('message', e => {
+  if (e.data?.type === '__activate_edit_mode') {
+    const root = document.getElementById('tweaks-root');
+    if (!tweaksRootMounted) {
+      tweaksRootMounted = true;
+      ReactDOM.createRoot(root).render(<TweaksApp />);
+    }
+    root.style.display = 'block';
+  }
+  if (e.data?.type === '__deactivate_edit_mode') {
+    document.getElementById('tweaks-root').style.display = 'none';
+  }
+});
+
+window.parent.postMessage({ type: '__edit_mode_available' }, '*');
+</script>
+
+</body>
+</html>
